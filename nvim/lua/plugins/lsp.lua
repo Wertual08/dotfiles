@@ -4,5 +4,4 @@ return {
     { "neovim/nvim-lspconfig", lazy = false },
 
     { "Hoffs/omnisharp-extended-lsp.nvim", lazy = false },
-    { "nvimdev/lspsaga.nvim", event = 'LspAttach', opts = require("config.lspsaga") },
 }

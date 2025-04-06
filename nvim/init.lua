@@ -24,31 +24,61 @@ vim.keymap.set('n', '.', '<Cmd>BufferLineCycleNext<CR>', { silent = true })
 vim.keymap.set('n', '<C-,>', '<Cmd>BufferLineMovePrev<CR>', { silent = true })
 vim.keymap.set('n', '<C-.>', '<Cmd>BufferLineMoveNext<CR>', { silent = true })
 
-vim.keymap.set('n', '<Space>f', require('telescope.builtin').find_files, {})
-vim.keymap.set('n', '<Space>g', function()
+vim.keymap.set('n', '<Space>ff', require('telescope.builtin').find_files, {})
+vim.keymap.set('n', '<Space>fg', function()
     require('telescope.builtin').live_grep({ default_text = vim.fn.expand('<cword>') })
 end, {})
-vim.keymap.set('n', '<Space>b', require('telescope.builtin').buffers, {})
-vim.keymap.set('n', '<Space>h', require('telescope.builtin').help_tags, {})
+vim.keymap.set('n', '<Space>fb', require('telescope.builtin').buffers, {})
+vim.keymap.set('n', '<Space>fh', require('telescope.builtin').help_tags, {})
+vim.keymap.set('n', '<Space>fvc', require('telescope.builtin').git_commits, {})
+vim.keymap.set('n', '<Space>fvb', require('telescope.builtin').git_branches, {})
+vim.keymap.set('n', '<Space>fvs', require('telescope.builtin').git_status, {})
 
 vim.keymap.set('n', '<space>v', require("nvim-tree.api").tree.toggle, {})
 
-vim.keymap.set('n', '[d',           vim.diagnostic.goto_prev, { noremap = true, silent = true })
-vim.keymap.set('n', ']d',           vim.diagnostic.goto_next, { noremap = true, silent = true })
-vim.keymap.set('n', 'gd',           vim.lsp.buf.definition, { noremap = true, silent = true })
-vim.keymap.set('n', 'K',            '<Cmd>Lspsaga hover_doc<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', 'gi',           '<Cmd>Lspsaga finder imp<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<space>D',     vim.lsp.buf.type_definition, { noremap = true, silent = true })
-vim.keymap.set('n', '<space>rn',    '<Cmd>Lspsaga rename<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<space>ca',    '<Cmd>Lspsaga code_action<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<space>o',     '<Cmd>Lspsaga outline<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', 'gr',           '<Cmd>Lspsaga finder ref+def+imp<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', 'gD',           vim.lsp.buf.declaration, { noremap = true, silent = true })
-vim.keymap.set('n', '<C-k>',        vim.lsp.buf.signature_help, { noremap = true, silent = true })
-vim.keymap.set('n', '<space>wa',    vim.lsp.buf.add_workspace_folder, { noremap = true, silent = true })
-vim.keymap.set('n', '<space>wr',    vim.lsp.buf.remove_workspace_folder, { noremap = true, silent = true })
-vim.keymap.set('n', '<space>wl',    function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, { noremap = true, silent = true })
-vim.keymap.set('n', '<space><C-f>', function() vim.lsp.buf.format { async = true } end, { noremap = true, silent = true })
+vim.keymap.set('n', 'gO', function()
+    require("telescope.builtin").lsp_document_symbols({
+        reuse_win = true,
+    })
+end, { noremap = true, silent = true })
+vim.keymap.set('n', 'gd', function()
+    require("telescope.builtin").lsp_definitions({
+        reuse_win = true,
+    })
+end, { noremap = true, silent = true })
+vim.keymap.set('n', 'gD', function()
+    require("telescope.builtin").lsp_type_definitions({
+        reuse_win = true,
+    })
+end, { noremap = true, silent = true })
+vim.keymap.set('n', 'gri', function()
+    require('telescope.builtin').lsp_implementations({
+        reuse_win = true,
+    })
+end, { noremap = true, silent = true })
+vim.keymap.set('n', 'grr', function()
+    require('telescope.builtin').lsp_references({
+        reuse_win = true,
+    })
+end, { noremap = true, silent = true })
+vim.keymap.set('n', 'grd', function()
+    require('telescope.builtin').diagnostics({
+        reuse_win = true,
+    })
+end, { noremap = true, silent = true })
+
+
+vim.keymap.set('n',        '[d',           function() vim.diagnostic.jump({ count = -1, float = true }) end, { noremap = true, silent = true })
+vim.keymap.set('n',        ']d',           function() vim.diagnostic.jump({ count = 1, float = true }) end, { noremap = true, silent = true })
+vim.keymap.set('n',        '<space>d',     function() vim.diagnostic.open_float() end, { noremap = true, silent = true })
+vim.keymap.set('n',        '<space>rn',    function() vim.diagnostic.rename() end, { noremap = true, silent = true })
+vim.keymap.set('n',        'K',            vim.lsp.buf.hover, { noremap = true, silent = true })
+vim.keymap.set('n',        '<C-k>',        vim.lsp.buf.signature_help, { noremap = true, silent = true })
+vim.keymap.set('n',        'gD',           vim.lsp.buf.declaration, { noremap = true, silent = true })
+vim.keymap.set('n',        '<space>wa',    vim.lsp.buf.add_workspace_folder, { noremap = true, silent = true })
+vim.keymap.set('n',        '<space>wr',    vim.lsp.buf.remove_workspace_folder, { noremap = true, silent = true })
+vim.keymap.set('n',        '<space>wl',    function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, { noremap = true, silent = true })
+vim.keymap.set('n',        '<space><C-f>', function() vim.lsp.buf.format { async = true } end, { noremap = true, silent = true })
 
 vim.diagnostic.config {
     signs = {
