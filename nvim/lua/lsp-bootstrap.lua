@@ -157,7 +157,7 @@ require("lspconfig").util.default_config = vim.tbl_extend(
     require("lspconfig").util.default_config,
     {
         flags = {
-            debounce_text_changes = 150,
+            debounce_text_changes = 0,
         },
         capabilities = require('cmp_nvim_lsp').default_capabilities(),
     }
