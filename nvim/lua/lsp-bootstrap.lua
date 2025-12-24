@@ -1,16 +1,16 @@
 vim.lsp.config("rust_analyzer", {
     settings = {
-	["rust-analyzer"] = {
-	    imports = {
-		granularity = {
-		    group = "item",
-		},
-		group = {
-		    enable = false,
-		},
-		prefix = "self",
-	    },
-	}
+        ["rust-analyzer"] = {
+            imports = {
+            granularity = {
+                group = "item",
+            },
+            group = {
+                enable = false,
+            },
+            prefix = "self",
+            },
+        }
     }
 })
 
@@ -19,20 +19,20 @@ vim.lsp.config("gopls", {
         gopls = {
             semanticTokens = true,
             codelenses = {
-            gc_details = true,
-            generate = true,
-            regenerate_cgo = true,
-            run_govulncheck = true,
-            tidy = true,
-            upgrade_dependency = true,
-            vendor = true,
+                gc_details = true,
+                generate = true,
+                regenerate_cgo = true,
+                run_govulncheck = true,
+                tidy = true,
+                upgrade_dependency = true,
+                vendor = true,
             },
             analyses = {
-            nilness = true,
-            unusedparams = true,
-            unusedwrite = true,
-            useany = true,
-            unusedvariable = true,
+                nilness = true,
+                unusedparams = true,
+                unusedwrite = true,
+                useany = true,
+                unusedvariable = true,
             },
             staticcheck = true,
         },
@@ -61,10 +61,10 @@ vim.lsp.config("lua_ls", {
 
 vim.lsp.config("omnisharp", {
     handlers = {
-	["textDocument/definition"] = require('omnisharp_extended').definition_handler,
-	["textDocument/typeDefinition"] = require('omnisharp_extended').type_definition_handler,
-	["textDocument/references"] = require('omnisharp_extended').references_handler,
-	["textDocument/implementation"] = require('omnisharp_extended').implementation_handler,
+        ["textDocument/definition"] = require('omnisharp_extended').definition_handler,
+        ["textDocument/typeDefinition"] = require('omnisharp_extended').type_definition_handler,
+        ["textDocument/references"] = require('omnisharp_extended').references_handler,
+        ["textDocument/implementation"] = require('omnisharp_extended').implementation_handler,
     },
 
     settings = {
@@ -151,17 +151,3 @@ vim.lsp.config("omnisharp", {
 	},
     },
 })
-
-require("lspconfig").util.default_config = vim.tbl_extend(
-    "force",
-    require("lspconfig").util.default_config,
-    {
-        flags = {
-            debounce_text_changes = 0,
-        },
-        capabilities = require('cmp_nvim_lsp').default_capabilities(),
-    }
-)
-
-require("mason").setup()
-require("mason-lspconfig").setup()
