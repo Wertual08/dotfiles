@@ -24,17 +24,39 @@ vim.keymap.set('n', '.', '<Cmd>BufferLineCycleNext<CR>', { silent = true })
 vim.keymap.set('n', '<C-,>', '<Cmd>BufferLineMovePrev<CR>', { silent = true })
 vim.keymap.set('n', '<C-.>', '<Cmd>BufferLineMoveNext<CR>', { silent = true })
 
-vim.keymap.set('n', '<Space>ff', require('telescope.builtin').find_files, {})
+vim.keymap.set('n', '<Space>ff', function()
+    require('telescope.builtin').find_files()
+end, {})
+
 vim.keymap.set('n', '<Space>fg', function()
     require('telescope.builtin').live_grep({ default_text = vim.fn.expand('<cword>') })
 end, {})
-vim.keymap.set('n', '<Space>fb', require('telescope.builtin').buffers, {})
-vim.keymap.set('n', '<Space>fh', require('telescope.builtin').help_tags, {})
-vim.keymap.set('n', '<Space>fvc', require('telescope.builtin').git_commits, {})
-vim.keymap.set('n', '<Space>fvb', require('telescope.builtin').git_branches, {})
-vim.keymap.set('n', '<Space>fvs', require('telescope.builtin').git_status, {})
 
-vim.keymap.set('n', '<space>v', require("nvim-tree.api").tree.toggle, {})
+vim.keymap.set('n', '<Space>fb', function()
+    require('telescope.builtin').buffers()
+end, {})
+
+vim.keymap.set('n', '<Space>fh', function()
+    require('telescope.builtin').help_tags()
+end, {})
+
+vim.keymap.set('n', '<Space>fvc', function()
+    require('telescope.builtin').git_commits()
+end, {})
+
+vim.keymap.set('n', '<Space>fvb', function()
+    require('telescope.builtin').git_branches()
+end, {})
+
+vim.keymap.set('n', '<Space>fvs', function()
+    require('telescope.builtin').git_status()
+end, {})
+
+
+vim.keymap.set('n', '<space>v', function()
+    require("nvim-tree.api").tree.toggle()
+end, {})
+
 
 vim.keymap.set('n', 'gO', function()
     require("telescope.builtin").lsp_document_symbols({
