@@ -13,6 +13,8 @@ vim.opt.autoread    = true
 vim.opt.lazyredraw  = true
 vim.opt.scrolloff   = 10
 
+vim.g.clipboard   = 'osc52'
+
 vim.cmd([[tnoremap <Esc> <C-\><C-n>]])
 
 vim.cmd([[aunmenu PopUp.How-to\ disable\ mouse]])
