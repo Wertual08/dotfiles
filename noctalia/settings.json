@@ -18,7 +18,7 @@
         "screenshotAnnotationTool": "",
         "showCategories": true,
         "showIconBackground": false,
-        "sortByMostUsed": true,
+        "sortByMostUsed": false,
         "terminalCommand": "ghostty -e",
         "useApp2Unit": false,
         "viewMode": "list"
@@ -28,7 +28,7 @@
         "mprisBlacklist": [
         ],
         "preferredPlayer": "",
-        "visualizerType": "linear",
+        "visualizerType": "mirrored",
         "volumeFeedback": false,
         "volumeOverdrive": false,
         "volumeStep": 5
@@ -94,13 +94,10 @@
                     "showIcon": true
                 },
                 {
-                    "colorizeIcons": false,
-                    "hideMode": "hidden",
-                    "id": "ActiveWindow",
-                    "maxWidth": 400,
-                    "scrollingMode": "hover",
-                    "showIcon": true,
-                    "useFixedWidth": false
+                    "colorName": "primary",
+                    "hideWhenIdle": false,
+                    "id": "AudioVisualizer",
+                    "width": 200
                 },
                 {
                     "compactMode": false,
@@ -121,10 +118,13 @@
                     "visualizerType": "linear"
                 },
                 {
-                    "colorName": "primary",
-                    "hideWhenIdle": false,
-                    "id": "AudioVisualizer",
-                    "width": 200
+                    "colorizeIcons": false,
+                    "hideMode": "hidden",
+                    "id": "ActiveWindow",
+                    "maxWidth": 400,
+                    "scrollingMode": "hover",
+                    "showIcon": true,
+                    "useFixedWidth": false
                 }
             ],
             "right": [
@@ -160,7 +160,7 @@
                     "compactMode": true,
                     "diskPath": "/",
                     "id": "SystemMonitor",
-                    "showCpuFreq": true,
+                    "showCpuFreq": false,
                     "showCpuTemp": true,
                     "showCpuUsage": true,
                     "showDiskAsFree": false,
@@ -249,11 +249,11 @@
                 "id": "audio-card"
             },
             {
-                "enabled": false,
+                "enabled": true,
                 "id": "brightness-card"
             },
             {
-                "enabled": true,
+                "enabled": false,
                 "id": "weather-card"
             },
             {
@@ -306,7 +306,7 @@
         "colorizeIcons": false,
         "deadOpacity": 0.6,
         "displayMode": "auto_hide",
-        "enabled": true,
+        "enabled": false,
         "floatingRatio": 1,
         "inactiveIndicators": false,
         "monitors": [
@@ -333,7 +333,7 @@
         "forceBlackScreenCorners": false,
         "iRadiusRatio": 0,
         "language": "",
-        "lockOnSuspend": true,
+        "lockOnSuspend": false,
         "lockScreenCountdownDuration": 10000,
         "radiusRatio": 0,
         "scaleRatio": 1,
@@ -378,7 +378,7 @@
         "bluetoothRssiPollIntervalMs": 10000,
         "bluetoothRssiPollingEnabled": false,
         "wifiDetailsViewMode": "grid",
-        "wifiEnabled": true
+        "wifiEnabled": false
     },
     "nightLight": {
         "autoSchedule": true,
@@ -391,15 +391,15 @@
     },
     "notifications": {
         "backgroundOpacity": 1,
-        "criticalUrgencyDuration": 5,
+        "criticalUrgencyDuration": 3,
         "enableKeyboardLayoutToast": false,
         "enableMediaToast": false,
         "enabled": true,
         "location": "top_right",
-        "lowUrgencyDuration": 2,
+        "lowUrgencyDuration": 1,
         "monitors": [
         ],
-        "normalUrgencyDuration": 3,
+        "normalUrgencyDuration": 2,
         "overlayLayer": true,
         "respectExpireTimeout": true,
         "saveToHistory": {
