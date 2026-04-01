@@ -1,116 +1,27 @@
-require("lazy-bootstrap")
-require("lsp-bootstrap")
+vim.pack.add({
+    "https://github.com/Mofiqul/vscode.nvim",
+    "https://github.com/nvim-tree/nvim-web-devicons",
+    "https://github.com/nvim-lualine/lualine.nvim",
+    "https://github.com/linrongbin16/lsp-progress.nvim",
+    "https://github.com/akinsho/bufferline.nvim",
+    "https://github.com/goolord/alpha-nvim",
+    "https://github.com/akinsho/toggleterm.nvim",
+    "https://github.com/mistweaverco/kulala.nvim",
+    "https://github.com/nvim-tree/nvim-tree.lua",
 
-vim.opt.tabstop     = 4
-vim.opt.softtabstop = 0
-vim.opt.shiftwidth  = 4
-vim.opt.expandtab   = true
-vim.opt.smarttab    = true
-vim.opt.rnu         = true
-vim.opt.nu          = true
-vim.opt.splitright  = true
-vim.opt.autoread    = true
-vim.opt.lazyredraw  = true
-vim.opt.scrolloff   = 10
+    { src = "https://github.com/saghen/blink.cmp", version = vim.version.range('1') },
 
-vim.g.clipboard   = 'osc52'
+    "https://github.com/mfussenegger/nvim-dap",
+    "https://github.com/nvim-treesitter/nvim-treesitter",
+    "https://github.com/neovim/nvim-lspconfig",
+    "https://github.com/williamboman/mason.nvim",
+    "https://github.com/williamboman/mason-lspconfig.nvim",
+    "https://github.com/nvim-telescope/telescope.nvim",
+    "https://github.com/nvim-lua/plenary.nvim",
+    "https://github.com/MagicDuck/grug-far.nvim",
+})
 
-vim.cmd([[tnoremap <Esc> <C-\><C-n>]])
-
-vim.cmd([[aunmenu PopUp.How-to\ disable\ mouse]])
-vim.cmd([[aunmenu PopUp.-1-]])
-
-vim.keymap.set('n', '<space>t', '<Cmd>ToggleTerm<CR>', { silent = true })
-vim.keymap.set('n', ',', '<Cmd>BufferLineCyclePrev<CR>', { silent = true })
-vim.keymap.set('n', '.', '<Cmd>BufferLineCycleNext<CR>', { silent = true })
-vim.keymap.set('n', '<C-,>', '<Cmd>BufferLineMovePrev<CR>', { silent = true })
-vim.keymap.set('n', '<C-.>', '<Cmd>BufferLineMoveNext<CR>', { silent = true })
-
-vim.keymap.set('n', '<Space>ff', function()
-    require('telescope.builtin').find_files()
-end, {})
-
-vim.keymap.set('n', '<Space>fg', function()
-    require('telescope.builtin').live_grep({ default_text = vim.fn.expand('<cword>') })
-end, {})
-
-vim.keymap.set('n', '<Space>fb', function()
-    require('telescope.builtin').buffers()
-end, {})
-
-vim.keymap.set('n', '<Space>fh', function()
-    require('telescope.builtin').help_tags()
-end, {})
-
-vim.keymap.set('n', '<Space>fvc', function()
-    require('telescope.builtin').git_commits()
-end, {})
-
-vim.keymap.set('n', '<Space>fvb', function()
-    require('telescope.builtin').git_branches()
-end, {})
-
-vim.keymap.set('n', '<Space>fvs', function()
-    require('telescope.builtin').git_status()
-end, {})
-
-
-vim.keymap.set('n', '<space>v', function()
-    require("nvim-tree.api").tree.toggle()
-end, {})
-
-
-vim.keymap.set('n', 'gO', function()
-    require("telescope.builtin").lsp_document_symbols({
-        reuse_win = true,
-    })
-end, { noremap = true, silent = true })
-vim.keymap.set('n', 'gd', function()
-    require("telescope.builtin").lsp_definitions({
-        reuse_win = true,
-    })
-end, { noremap = true, silent = true })
-vim.keymap.set('n', 'gD', function()
-    require("telescope.builtin").lsp_type_definitions({
-        reuse_win = true,
-    })
-end, { noremap = true, silent = true })
-vim.keymap.set('n', 'gri', function()
-    require('telescope.builtin').lsp_implementations({
-        reuse_win = true,
-    })
-end, { noremap = true, silent = true })
-vim.keymap.set('n', 'grr', function()
-    require('telescope.builtin').lsp_references({
-        reuse_win = true,
-    })
-end, { noremap = true, silent = true })
-vim.keymap.set('n', 'grd', function()
-    require('telescope.builtin').diagnostics({
-        reuse_win = true,
-    })
-end, { noremap = true, silent = true })
-
-
-vim.keymap.set('n',        '[d',           function() vim.diagnostic.jump({ count = -1, float = true }) end, { noremap = true, silent = true })
-vim.keymap.set('n',        ']d',           function() vim.diagnostic.jump({ count = 1, float = true }) end, { noremap = true, silent = true })
-vim.keymap.set('n',        '<space>d',     function() vim.diagnostic.open_float() end, { noremap = true, silent = true })
-vim.keymap.set('n',        '<space>rn',    function() vim.lsp.buf.rename() end, { noremap = true, silent = true })
-vim.keymap.set('n',        'K',            vim.lsp.buf.hover, { noremap = true, silent = true })
-vim.keymap.set('n',        '<C-k>',        vim.lsp.buf.signature_help, { noremap = true, silent = true })
-vim.keymap.set('n',        'gD',           vim.lsp.buf.declaration, { noremap = true, silent = true })
-vim.keymap.set('n',        '<space>wa',    vim.lsp.buf.add_workspace_folder, { noremap = true, silent = true })
-vim.keymap.set('n',        '<space>wr',    vim.lsp.buf.remove_workspace_folder, { noremap = true, silent = true })
-vim.keymap.set('n',        '<space>wl',    function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, { noremap = true, silent = true })
-vim.keymap.set('n',        '<space><C-f>', function() vim.lsp.buf.format { async = true } end, { noremap = true, silent = true })
-
-vim.diagnostic.config {
-    signs = {
-        text = {
-            [vim.diagnostic.severity.ERROR] = "",
-            [vim.diagnostic.severity.WARN] = "",
-            [vim.diagnostic.severity.INFO] = "",
-            [vim.diagnostic.severity.HINT] = "󰞂",
-        },
-    },
-}
+require("init-options")
+require("init-plugins")
+require("init-keymap")
+require("init-lsp")

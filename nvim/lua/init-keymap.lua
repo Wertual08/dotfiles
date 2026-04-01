@@ -1,0 +1,83 @@
+vim.keymap.set('n', '<space>t', '<Cmd>ToggleTerm<CR>', { silent = true })
+vim.keymap.set('n', ',', '<Cmd>BufferLineCyclePrev<CR>', { silent = true })
+vim.keymap.set('n', '.', '<Cmd>BufferLineCycleNext<CR>', { silent = true })
+vim.keymap.set('n', '<C-,>', '<Cmd>BufferLineMovePrev<CR>', { silent = true })
+vim.keymap.set('n', '<C-.>', '<Cmd>BufferLineMoveNext<CR>', { silent = true })
+
+vim.keymap.set('n', '<Space>ff', function()
+    require('telescope.builtin').find_files()
+end, {})
+
+vim.keymap.set('n', '<Space>fg', function()
+    require('telescope.builtin').live_grep({ default_text = vim.fn.expand('<cword>') })
+end, {})
+
+vim.keymap.set('n', '<Space>fb', function()
+    require('telescope.builtin').buffers()
+end, {})
+
+vim.keymap.set('n', '<Space>fh', function()
+    require('telescope.builtin').help_tags()
+end, {})
+
+vim.keymap.set('n', '<Space>fvc', function()
+    require('telescope.builtin').git_commits()
+end, {})
+
+vim.keymap.set('n', '<Space>fvb', function()
+    require('telescope.builtin').git_branches()
+end, {})
+
+vim.keymap.set('n', '<Space>fvs', function()
+    require('telescope.builtin').git_status()
+end, {})
+
+
+vim.keymap.set('n', '<space>v', function()
+    require("nvim-tree.api").tree.toggle()
+end, {})
+
+
+vim.keymap.set('n', 'gO', function()
+    require("telescope.builtin").lsp_document_symbols({
+        reuse_win = true,
+    })
+end, { noremap = true, silent = true })
+vim.keymap.set('n', 'gd', function()
+    require("telescope.builtin").lsp_definitions({
+        reuse_win = true,
+    })
+end, { noremap = true, silent = true })
+vim.keymap.set('n', 'gD', function()
+    require("telescope.builtin").lsp_type_definitions({
+        reuse_win = true,
+    })
+end, { noremap = true, silent = true })
+vim.keymap.set('n', 'gri', function()
+    require('telescope.builtin').lsp_implementations({
+        reuse_win = true,
+    })
+end, { noremap = true, silent = true })
+vim.keymap.set('n', 'grr', function()
+    require('telescope.builtin').lsp_references({
+        reuse_win = true,
+    })
+end, { noremap = true, silent = true })
+vim.keymap.set('n', 'grd', function()
+    require('telescope.builtin').diagnostics({
+        reuse_win = true,
+    })
+end, { noremap = true, silent = true })
+
+
+vim.keymap.set('n',        '[d',           function() vim.diagnostic.jump({ count = -1, float = true }) end, { noremap = true, silent = true })
+vim.keymap.set('n',        ']d',           function() vim.diagnostic.jump({ count = 1, float = true }) end, { noremap = true, silent = true })
+vim.keymap.set('n',        '<space>d',     function() vim.diagnostic.open_float() end, { noremap = true, silent = true })
+vim.keymap.set('n',        '<space>rn',    function() vim.lsp.buf.rename() end, { noremap = true, silent = true })
+vim.keymap.set('n',        'K',            vim.lsp.buf.hover, { noremap = true, silent = true })
+vim.keymap.set('n',        '<C-k>',        vim.lsp.buf.signature_help, { noremap = true, silent = true })
+vim.keymap.set('n',        'gD',           vim.lsp.buf.declaration, { noremap = true, silent = true })
+vim.keymap.set('n',        '<space>wa',    vim.lsp.buf.add_workspace_folder, { noremap = true, silent = true })
+vim.keymap.set('n',        '<space>wr',    vim.lsp.buf.remove_workspace_folder, { noremap = true, silent = true })
+vim.keymap.set('n',        '<space>wl',    function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, { noremap = true, silent = true })
+vim.keymap.set('n',        '<space><C-f>', function() vim.lsp.buf.format { async = true } end, { noremap = true, silent = true })
