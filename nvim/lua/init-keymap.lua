@@ -80,4 +80,4 @@ vim.keymap.set('n',        'gD',           vim.lsp.buf.declaration, { noremap = 
 vim.keymap.set('n',        '<space>wa',    vim.lsp.buf.add_workspace_folder, { noremap = true, silent = true })
 vim.keymap.set('n',        '<space>wr',    vim.lsp.buf.remove_workspace_folder, { noremap = true, silent = true })
 vim.keymap.set('n',        '<space>wl',    function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, { noremap = true, silent = true })
-vim.keymap.set('n',        '<space><C-f>', function() vim.lsp.buf.format { async = true } end, { noremap = true, silent = true })
+vim.keymap.set('n',        'grf',    function() vim.lsp.buf.format({ async = true }) end, { noremap = true, silent = true })

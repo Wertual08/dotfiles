@@ -6,7 +6,7 @@ require("lsp-progress").setup()
 require("bufferline").setup(require("plugins.bufferline"))
 
 require("nvim-tree").setup(require("plugins.nvim-tree"))
-require("telescope").setup(require("plugins.telescope"))
+require("plugins.telescope")
 require("toggleterm").setup(require("plugins.toggleterm"))
 
 require("plugins.nvim-treesitter")
