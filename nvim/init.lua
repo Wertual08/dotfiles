@@ -8,9 +8,7 @@ vim.pack.add({
     "https://github.com/akinsho/toggleterm.nvim",
     "https://github.com/mistweaverco/kulala.nvim",
     "https://github.com/nvim-tree/nvim-tree.lua",
-
-    { src = "https://github.com/saghen/blink.cmp", version = vim.version.range('1') },
-
+    "https://github.com/saghen/blink.cmp",
     "https://github.com/mfussenegger/nvim-dap",
     "https://github.com/nvim-treesitter/nvim-treesitter",
     "https://github.com/neovim/nvim-lspconfig",
