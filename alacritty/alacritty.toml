@@ -1,0 +1,33 @@
+[general]
+live_config_reload = true
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 9.0
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[[keyboard.bindings]]
+chars = "\u001B[46;5u"
+key = "Period"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[44;5u"
+key = "Comma"
+mods = "Control"
+
+[window]
+opacity = 0.9
