@@ -1,4 +1,4 @@
-return {
+require("bufferline").setup({
     options = {
         numbers = "none",
         diagnostics = "nvim_lsp",
@@ -7,4 +7,4 @@ return {
         show_buffer_close_icons = false,
         show_close_icon = false,
     },
-}
+})

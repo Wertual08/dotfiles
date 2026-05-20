@@ -1,13 +1,13 @@
 require("plugins.vscode-nvim")
 require("plugins.alpha-nvim")
 
-require("lualine").setup(require("plugins.lualine"))
+require("plugins.lualine")
 require("lsp-progress").setup()
-require("bufferline").setup(require("plugins.bufferline"))
+require("plugins.bufferline")
 
-require("nvim-tree").setup(require("plugins.nvim-tree"))
+require("plugins.nvim-tree")
 require("plugins.telescope")
-require("toggleterm").setup(require("plugins.toggleterm"))
+require("plugins.toggleterm")
 
 require("plugins.nvim-treesitter")
 

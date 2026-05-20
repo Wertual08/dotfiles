@@ -46,10 +46,7 @@ require("blink.cmp").setup({
     completion = completion,
 
     fuzzy = {
-        prebuilt_binaries = {
-            download = true,
-            force_version = 'v*',
-        },
+        implementation = "prefer_rust_with_warning",
     },
 
     sources = {
@@ -69,3 +66,5 @@ require("blink.cmp").setup({
         completion = completion,
     },
 })
+
+require("blink.cmp").build()
