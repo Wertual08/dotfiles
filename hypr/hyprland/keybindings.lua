@@ -7,8 +7,8 @@ hl.bind("XF86MonBrightnessUp",                    hl.dsp.exec_cmd("qs -c noctali
 hl.bind("XF86MonBrightnessDown",                  hl.dsp.exec_cmd("qs -c noctalia-shell ipc call brightness decrease"))
 
 hl.bind("SUPER                      + DELETE",    hl.dsp.exec_cmd("loginctl lock-session"))
-hl.bind("SUPER                      + BACKSLASH", hl.dsp.exec_cmd("hyprctl dispatch dpms toggle $(hyprctl -j activeworkspace | jq -r .monitor)"))
-hl.bind("SUPER                      + T",         hl.dsp.exec_cmd("ghostty --font-size=7"))
+hl.bind("SUPER                      + BACKSLASH", hl.dsp.dpms({action = "toggle", monitor = "current"}))
+hl.bind("SUPER                      + T",         hl.dsp.exec_cmd("ghostty"))
 hl.bind("SUPER                      + X",         hl.dsp.exec_cmd("qs -c noctalia-shell ipc call launcher toggle"))
 hl.bind("SUPER                      + B",         hl.dsp.exec_cmd("firefox"))
 hl.bind("SUPER                      + PRINT",     hl.dsp.exec_cmd("grim -g \"$(slurp -d)\" - | wl-copy"))
