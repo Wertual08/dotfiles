@@ -6,6 +6,8 @@ hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call volum
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call brightness increase"))
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call brightness decrease"))
 
+hl.bind("SUPER                      + SPACE", function() end)
+
 hl.bind("SUPER                      + DELETE", hl.dsp.exec_cmd("loginctl lock-session"))
 hl.bind("SUPER                      + BACKSLASH", hl.dsp.dpms({ action = "toggle", monitor = "current" }))
 hl.bind("SUPER                      + T", hl.dsp.exec_cmd("ghostty"))
