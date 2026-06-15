@@ -18,6 +18,10 @@ local completion = {
 }
 
 require("blink.cmp").setup({
+    enabled = function()
+      return not vim.fn.reg_recording() ~= 0 and not vim.fn.reg_executing() ~= 0
+    end,
+
     keymap = {
         ['<Tab>'] = { 'select_next', 'fallback' },
         ['<S-Tab>'] = { 'select_prev', 'fallback' },
