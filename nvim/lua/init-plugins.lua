@@ -7,7 +7,6 @@ require("plugins.bufferline")
 
 require("plugins.nvim-tree")
 require("plugins.telescope")
-require("plugins.toggleterm")
 
 require("plugins.nvim-treesitter")
 

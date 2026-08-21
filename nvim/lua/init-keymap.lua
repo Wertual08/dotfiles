@@ -1,4 +1,3 @@
-vim.keymap.set('n', '<space>t', '<Cmd>ToggleTerm<CR>', { silent = true })
 vim.keymap.set('n', ',', '<Cmd>BufferLineCyclePrev<CR>', { silent = true })
 vim.keymap.set('n', '.', '<Cmd>BufferLineCycleNext<CR>', { silent = true })
 vim.keymap.set('n', '<C-,>', '<Cmd>BufferLineMovePrev<CR>', { silent = true })

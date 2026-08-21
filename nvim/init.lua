@@ -5,7 +5,6 @@ vim.pack.add({
     "https://github.com/linrongbin16/lsp-progress.nvim",
     "https://github.com/akinsho/bufferline.nvim",
     "https://github.com/goolord/alpha-nvim",
-    "https://github.com/akinsho/toggleterm.nvim",
     "https://github.com/mistweaverco/kulala.nvim",
     "https://github.com/nvim-tree/nvim-tree.lua",
     "https://github.com/saghen/blink.lib",
