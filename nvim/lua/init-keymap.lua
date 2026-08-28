@@ -1,3 +1,37 @@
+vim.keymap.set('n', '<space>t', function()
+    local current = vim.api.nvim_win_get_buf(0)
+    local options = vim.bo[current]
+    if options.buftype == "terminal" and options.buflisted then
+        local variables = vim.b[current]
+        if variables.previous_buffer ~= nil and vim.api.nvim_buf_is_valid(variables.previous_buffer) then
+            vim.api.nvim_win_set_buf(0, variables.previous_buffer)
+        end
+        return
+    end
+
+    local buffers = vim.tbl_filter(function(bufnr)
+        if not vim.api.nvim_buf_is_valid(bufnr) then
+            return false
+        end
+
+        local opt = vim.bo[bufnr]
+        return opt.buftype == "terminal" and opt.buflisted
+    end, vim.api.nvim_list_bufs())
+
+    for _, bufnr in ipairs(buffers) do
+        vim.b[bufnr].previous_buffer = current
+        vim.api.nvim_win_set_buf(0, bufnr)
+        return
+    end
+
+    local buf = vim.api.nvim_create_buf(true, true)
+    vim.b[buf].previous_buffer = current
+    vim.api.nvim_win_set_buf(0, buf)
+    vim.api.nvim_buf_call(buf, function()
+        vim.fn.jobstart(vim.o.shell, { term = true })
+    end)
+end, { silent = true })
+
 vim.keymap.set('n', ',', '<Cmd>BufferLineCyclePrev<CR>', { silent = true })
 vim.keymap.set('n', '.', '<Cmd>BufferLineCycleNext<CR>', { silent = true })
 vim.keymap.set('n', '<C-,>', '<Cmd>BufferLineMovePrev<CR>', { silent = true })
