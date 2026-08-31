@@ -4,10 +4,7 @@ require("hyprland.keybindings")
 require("hyprland.guestures")
 
 hl.on("hyprland.start", function ()
-    hl.exec_cmd("hyprpaper")
-    hl.exec_cmd("hypridle")
-    hl.exec_cmd("qs -c noctalia-shell")
-    hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
+    hl.exec_cmd("noctalia")
 end)
 
 hl.env("QT_QPA_PLATFORM", "wayland;xcb")
