@@ -10,3 +10,4 @@ font-feature = -calt
 clipboard-paste-protection = false
 
 keybind = ctrl+,=text:\x1b[44;5u
+theme = noctalia
