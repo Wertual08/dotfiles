@@ -106,6 +106,14 @@ screen_time_enabled = true
     [shell.screen_corners]
     size = 1
 
+    [shell.launcher.dmenu.entry.command]
+    label = "Run Command"
+    prefix = "cmd"
+    glyph = "terminal"
+    global = false
+    freeform = true
+    exec = "sh -c \"{query}\""
+
 [theme]
 builtin = "Eldritch"
 community_palette = "Oxocarbon"
