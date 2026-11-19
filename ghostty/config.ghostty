@@ -1,9 +1,9 @@
-#term=xterm-256color
+term=xterm-256color
 
 font-size = 9.0
 background = #101010
 background-opacity = 0.9
-background-blur = 20
+#background-blur = 20
 mouse-scroll-multiplier = 1
 font-feature = -calt
 
